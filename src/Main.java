@@ -55,16 +55,24 @@ public class Main {
         System.out.println();
 
         //task-9
-        int paymentNew = 29000;
-        int totalNew = 0;
-        int percents;
+        int paymentNew = 29000; //еж-мес платеж на вклад 1го числа
+        int totalDeposit = 0; //сумма с которой начисляется %% в конце месяца (на 31- число)
+        int percents; //сумма начисленных процентов за месяц
+        int totalPercents = 0; //сумма %% накопительным итогом
+
         for (int i = 1; i <= 12; i++) {
-            percents = totalNew * 12 / 12 / 100; //начислен %% по вкладу за предыдущий месяц (12% годовых)
-            totalNew += (paymentNew + percents);
+            totalDeposit = totalDeposit + paymentNew; //положили 29 000 в начале месяца
+            percents = totalDeposit/100; // начислили %% в конце месяца
+            totalDeposit = totalDeposit + percents; // добавили начисленные %%
+            totalPercents = totalPercents + percents; //считаем начисленные %% накопительным итогом
+
             System.out.println("Месяц " + i + ", начислены %% = " + percents +
-                    ", сумма накоплений = " + totalNew + " рублей.");
+                    ", сумма накоплений = " + totalDeposit + " рублей.");
         }
-        System.out.println();
+
+        System.out.println("Вклад закрыт, общая сумма на депозите - " + totalDeposit);
+        System.out.println("Общая сумма начисленных процентов - " + totalPercents);
+        System.out.println("\n");
 
         //task-10
         for (int i = 1; i <= 10; i++) {
